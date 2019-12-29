@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | RollerMadness</title>
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <link rel="shortcut icon" href="TemplateData/favicon.ico" />
+    <script src="TemplateData/UnityProgress.js"></script>
+    <style>
+
+      .loading{
+        position:fixed;
+        top:0;
+        left:25%;
+        height:50%;
+        width:50%;
+        z-index:9999999999999
+      }
+
+      .spinner {
+        margin: 250px auto;
+        width: 40px;
+        height: 40px;
+        position: relative;
+      }
+
+      .cube1,
+      .cube2 {
+        background-color: #fafafa;
+        width: 15px;
+        height: 15px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        -webkit-animation: sk-cubemove 1.8s infinite ease-in-out;
+        animation: sk-cubemove 1.8s infinite ease-in-out;
+      }
+
+      .cube2 {
+        -webkit-animation-delay: -0.9s;
+        animation-delay: -0.9s;
+      }
+
+      @-webkit-keyframes sk-cubemove {
+        25% {
+          -webkit-transform: translateX(42px) rotate(-90deg) scale(0.5);
+        }
+
+        50% {
+          -webkit-transform: translateX(42px) translateY(42px) rotate(-180deg);
+        }
+
+        75% {
+          -webkit-transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
+        }
+
+        100% {
+          -webkit-transform: rotate(-360deg);
+        };
+      }
+
+      @keyframes sk-cubemove {
+        25% {
+          transform: translateX(42px) rotate(-90deg) scale(0.5);
+          -webkit-transform: translateX(42px) rotate(-90deg) scale(0.5);
+        }
+
+        50% {
+          transform: translateX(42px) translateY(42px) rotate(-179deg);
+          -webkit-transform: translateX(42px) translateY(42px) rotate(-179deg);
+        }
+
+        50.1% {
+          transform: translateX(42px) translateY(42px) rotate(-180deg);
+          -webkit-transform: translateX(42px) translateY(42px) rotate(-180deg);
+        }
+
+        75% {
+          transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
+          -webkit-transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
+        }
+
+        100% {
+          transform: rotate(-360deg);
+          -webkit-transform: rotate(-360deg);
+        };
+      }
+    </style>
+  </head>
+  <body class="template">
+    <!-- ====== Preloader ======  -->
+      <div class="loading">
+        <div class="spinner">
+          <div class="cube1"></div>
+          <div class="cube2"></div>
+        </div>
+      </div>
+    <!-- ======End Preloader ======  -->
+
+    <div class="template-wrap clear">
+      <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" height="600px" width="960px"></canvas>
+      <br>
+      <div class="logo"></div>
+      <div class="fullscreen"><img src="TemplateData/fullscreen.png" width="38" height="38" alt="Fullscreen" title="Fullscreen" onclick="SetFullscreen(1);" /></div>
+      <div class="title">RollerMadness</div>
+    </div>
+    <script src="jquery-3.0.0.min.js"></script>
+  var Module = {
+    TOTAL_MEMORY: 268435456,
+    errorhandler: null,			// arguments: err, url, line. This function must return 'true' if the error is handled, otherwise 'false'
+    compatibilitycheck: null,
+    backgroundColor: "#222C36",
+    splashStyle: "Light",
+    dataUrl: "Release/WebGL RollerMadness.data",
+    codeUrl: "Release/WebGL RollerMadness.js",
+    asmUrl: "Release/WebGL RollerMadness.asm.js",
+    memUrl: "Release/WebGL RollerMadness.mem",
+  };
+</script>
+<script src="Release/UnityLoader.js"></script>
+<script type="text/javascript">
+    var checkDisplay = setInterval(function(){
+
+    if(Module.progress.progress > 0) {
+        $(".loading").fadeOut(500);
+        clearInterval(checkDisplay);
+    }
+  },100)
+  </body>
+</html>
